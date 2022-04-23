@@ -1,0 +1,19 @@
+{
+  "autoload": {
+    "psr-4": {
+      "WilokeCard\\": "src/"
+    }
+  },
+  "require-dev": {
+    "wilokecom/phpcli": "^1.28"
+  },
+  "require": {
+    "php": ">=7.4 <8.0",
+    "timber/timber": "^1.19"
+  },
+  "config": {
+    "platform": {
+      "php": "7.4"
+    }
+  }
+}

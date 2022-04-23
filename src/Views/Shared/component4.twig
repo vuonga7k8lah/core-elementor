@@ -1,0 +1,44 @@
+{% set componentName = "wil-card" %}
+{% set background = item.backgroundColor ? 'background-color:' ~ item.backgroundColor ~ ';' : '' %}
+{% set iconColor = item.iconColor ? 'color:' ~ item.iconColor ~ ';' : '' %}
+{% set titleColor = item.titleColor ? 'color:' ~ item.titleColor ~ ';' : '' %}
+{% set textColor = item.textColor ? 'color:' ~ item.textColor ~ ';' : '' %}
+{% set buttonColor = item.buttonColor ? 'color:' ~ item.buttonColor ~ ';' : '' %}
+{% set buttonBackgroundColor = item.buttonBackgroundColor ? 'background-color:' ~ item.buttonBackgroundColor ~ ';' : '' %}
+{% set reverseClassName = reverse and loop.index0 % 2 == 1 ? 'flf:row-reverse@md' : '' %}
+
+<div class="{{ componentName }}-4 c:#000 lh:1.5 bgc:#fff" style="{{ background }}">
+
+  <div class="d:flex flw:wrap {{ reverseClassName }}">
+    <div class="w:100% w:50%@md">
+      <div class="{{ componentName }}-4__img pos:relative h:100%@md pt:75%@+md bgp:center bgz:cover bgc:rgba(0,0,0,0.04)" style="background-image: url('{{ item.image }}')">
+        {% if item.icon %}
+          <div class="{{ componentName }}-4__icon w:100px h:100px bdrs:50% d:flex jc:center ai:center bgc:#fff c:#000 bxsh:0_5px_15px_rgba(0,0,0,0.1) fz:pfs(30px,40px) pos:absolute t:50% l:50% trf:translate(-50%,-50%) z:9" style="{{ iconColor }}">
+            {% if item.icon.url %}
+              <img class="w:100px" src="{{ item.icon.url }}" alt="">
+            {% else %}
+                <i class="{{ item.icon }}"></i>
+            {% endif %}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="w:100% w:50%@md">
+      <div class="p:pfs(0px,50px) pt:pfs(10px,80px)! pb:pfs(30px,80px)!" style="{{ background }}">
+        <div class="w:36px h:4px bgc:#000" style="{{ titleColor }}"></div>
+        {% if item.title %}
+          <h2 class="{{ componentName }}-4__title m:0 mt:30px fz:pfs(28px,32px) fw:600!" style="{{ titleColor }}">{{ item.title }}</h2>
+        {% endif %}
+
+        {% if item.text %}
+          <div class="{{ componentName }}-4__text mt:20px op:0.8 fz:17px c:#555" style="{{ textColor }}">{{ item.text }}</div>
+        {% endif %}
+
+        {% if item.buttonText %}
+          <a href="{{ item.buttonUrl }}" class="{{ componentName }}-4__btn d:inline-block bxsh:none o:0 td:none p:15px_50px bdrs:10px bgc:#ffdbc7 c:#000 fz:14px fw:600 mt:pfs(30px,40px)" style="{{ buttonColor }}{{ buttonBackgroundColor }}">{{ item.buttonText }}</a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>

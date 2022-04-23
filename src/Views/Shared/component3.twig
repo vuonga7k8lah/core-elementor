@@ -1,0 +1,42 @@
+{% set componentName = "wil-card" %}
+{% set background = item.backgroundColor ? 'background-color:' ~ item.backgroundColor ~ ';' : '' %}
+{% set iconColor = item.iconColor ? 'color:' ~ item.iconColor ~ ';' : '' %}
+{% set titleColor = item.titleColor ? 'color:' ~ item.titleColor ~ ';' : '' %}
+{% set textColor = item.textColor ? 'color:' ~ item.textColor ~ ';' : '' %}
+{% set buttonColor = item.buttonColor ? 'color:' ~ item.buttonColor ~ ';' : '' %}
+{% set buttonBackgroundColor = item.buttonBackgroundColor ? 'background-color:' ~ item.buttonBackgroundColor ~ ';' : '' %}
+
+<div class="{{ componentName }}-3 {{ componentName }}-parent c:#000 lh:1.5 bgc:#fff ta:center" style="{{ background }}">
+
+  {% if item.image %}
+    <div class="{{ componentName }}-3__img pos:relative pt:56.25% bgp:center bgz:cover bdrs:20px" style="background-image: url('{{ item.image }}')">
+      {% if item.buttonText %}
+        <div class="pos:absolute t:50% l:50% trf:translate(-50%,-50%)">
+          <a href="{{ item.buttonUrl }}" class="{{ componentName }}-3__btn {{ componentName }}-child--fadeup d:inline-block bxsh:none o:0 td:none p:15px_30px bdrs:40px bgc:#ec5186 c:#fff fz:14px fw:600" style="{{ buttonColor }}{{ buttonBackgroundColor }}">{{ item.buttonText }}</a>
+        </div>
+      {% endif %}
+    </div>
+  {% else %}
+    <div class="h:60px"></div>
+  {% endif %}
+
+  {% if item.icon %}
+    <div class="{{ componentName }}-3__icon w:80px h:80px bdrs:50% d:flex jc:center ai:center bgc:#fff c:#000 bxsh:0_5px_15px_rgba(0,0,0,0.1) fz:pfs(20px,30px) m:auto mt:-40px pos:relative z:9" style="{{ iconColor }}">
+      {% if item.icon.url %}
+        <img class="w:80px" src="{{ item.icon.url }}" alt="">
+      {% else %}
+          <i class="{{ item.icon }}"></i>
+      {% endif %}
+    </div>
+  {% endif %}
+
+  <div class="p:15px p:20px@sm" style="{{ background }}">
+    {% if item.title %}
+      <h2 class="{{ componentName }}-3__title m:0 fz:pfs(22px,26px) fw:600!" style="{{ titleColor }}">{{ item.title }}</h2>
+    {% endif %}
+
+    {% if item.text %}
+      <div class="{{ componentName }}-3__text mt:10px op:0.8 fz:16px c:#666" style="{{ textColor }}">{{ item.text }}</div>
+    {% endif %}
+  </div>
+</div>

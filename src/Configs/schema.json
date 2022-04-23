@@ -1,0 +1,255 @@
+[
+  {
+    "id": "general",
+    "type": "section",
+    "name": "general",
+    "label": "General",
+    "default": [],
+    "fields": [
+      {
+        "id": "general_variant",
+        "type": "select",
+        "default": "variant1",
+        "name": "variant",
+        "label": "Variant",
+        "options": {
+          "variant1": "Variant 1",
+          "variant2": "Variant 2",
+          "variant3": "Variant 3",
+          "variant4": "Variant 4"
+        }
+      },
+      {
+        "id": "general_content",
+        "type": "array",
+        "default": [],
+        "name": "content",
+        "label": "Content",
+        "fields": [
+          {
+            "id": "general_content_icon",
+            "type": "icons",
+            "default": {
+              "value": "far fa-address-book",
+              "library": "fa-regular"
+            },
+            "name": "icon",
+            "label": "Icon"
+          },
+          {
+            "id": "general_content_image",
+            "type": "media",
+            "default": {
+              "url": "/wp-content/plugins/wil-card/src/Assets/Image/placeholder.jpeg"
+            },
+            "name": "image",
+            "label": "Image"
+          },
+          {
+            "id": "general_content_title",
+            "type": "text",
+            "default": "This is a title",
+            "name": "title",
+            "label": "Title"
+          },
+          {
+            "id": "general_content_buttonText",
+            "type": "text",
+            "default": "Learn more",
+            "name": "buttonText",
+            "label": "Button Text"
+          },
+          {
+            "id": "general_content_buttonUrl",
+            "type": "text",
+            "default": "",
+            "name": "buttonUrl",
+            "label": "Button Url"
+          },
+          {
+            "id": "general_content_backgroundColor",
+            "type": "color",
+            "default": "",
+            "name": "backgroundColor",
+            "label": "Background Color"
+          },
+          {
+            "id": "general_content_iconColor",
+            "type": "color",
+            "default": "",
+            "name": "iconColor",
+            "label": "Icon Color"
+          },
+          {
+            "id": "general_content_titleColor",
+            "type": "color",
+            "default": "",
+            "name": "titleColor",
+            "label": "Title Color"
+          },
+          {
+            "id": "general_content_textColor",
+            "type": "color",
+            "default": "",
+            "name": "textColor",
+            "label": "Text Color"
+          },
+          {
+            "id": "general_content_buttonColor",
+            "type": "color",
+            "default": "",
+            "name": "buttonColor",
+            "label": "Button Color"
+          },
+          {
+            "id": "general_content_buttonBackgroundColor",
+            "type": "color",
+            "default": "",
+            "name": "buttonBackgroundColor",
+            "label": "Button Background Color"
+          },
+          {
+            "id": "general_content_buttonBackgroundColor_1",
+            "type": "wil-custom-post",
+            "default": "",
+            "name": "buttonBackgroundColor1",
+            "label": "Custom Post"
+          },
+          {
+            "id": "general_content_select_1",
+            "type": "select2",
+            "default": "",
+            "name": "select2",
+            "multiple": true,
+            "label": "Test Select 2",
+            "options": {
+              "variant1": "Variant 1",
+              "variant2": "Variant 2",
+              "variant3": "Variant 3",
+              "variant4": "Variant 4"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "responsive",
+    "type": "section",
+    "name": "responsive",
+    "label": "Responsive",
+    "default": [],
+    "fields": [
+      {
+        "id": "responsive_lg",
+        "type": "number",
+        "name": "lg",
+        "label": "Large",
+        "min": 1,
+        "max": 10,
+        "default": 4,
+        "condition": {
+          "general_variant": [
+            "variant1",
+            "variant2",
+            "variant3"
+          ]
+        }
+      },
+      {
+        "id": "responsive_md",
+        "type": "number",
+        "name": "md",
+        "label": "Medium",
+        "min": 1,
+        "max": 10,
+        "default": 3,
+        "condition": {
+          "general_variant": [
+            "variant1",
+            "variant2",
+            "variant3"
+          ]
+        }
+      },
+      {
+        "id": "responsive_sm",
+        "type": "number",
+        "name": "sm",
+        "label": "Small",
+        "min": 1,
+        "max": 10,
+        "default": 2,
+        "condition": {
+          "general_variant": [
+            "variant1",
+            "variant2",
+            "variant3"
+          ]
+        }
+      },
+      {
+        "id": "responsive_xs",
+        "type": "number",
+        "name": "xs",
+        "label": "Extra small",
+        "min": 1,
+        "max": 10,
+        "default": 1,
+        "condition": {
+          "general_variant": [
+            "variant1",
+            "variant2",
+            "variant3"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "carousel",
+    "type": "section",
+    "name": "carousel",
+    "label": "Carousel",
+    "default": [],
+    "fields": [
+      {
+        "id": "carousel_enable",
+        "type": "switcher",
+        "name": "enable",
+        "label": "Enable",
+        "default": false
+      },
+      {
+        "id": "carousel_buttonEnable",
+        "type": "switcher",
+        "name": "buttonEnable",
+        "label": "Button Enable",
+        "default": true,
+        "condition": {
+          "carousel_enable": true
+        }
+      },
+      {
+        "id": "carousel_paginationEnable",
+        "type": "switcher",
+        "name": "paginationEnable",
+        "label": "Pagination Enable",
+        "default": true,
+        "condition": {
+          "carousel_enable": true
+        }
+      },
+      {
+        "id": "carousel_buttonColor",
+        "type": "color",
+        "name": "buttonColor",
+        "label": "Button Color",
+        "default": "#000",
+        "condition": {
+          "carousel_enable": true
+        }
+      }
+    ]
+  }
+]

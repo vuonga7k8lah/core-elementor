@@ -1,0 +1,40 @@
+{% set componentName = "wil-card" %}
+{% set componentFile = 'component4.twig' %}
+
+{% if data|length == 0 %}
+<div class="{{ componentName }}-wrapper">
+  <div class="p:40px fz:20px ta:center bgc:#eee">Click here to set up the card</div>
+</div>
+{% else %}
+
+<div class="{{ componentName }}-wrapper">
+  {% if carousel.enable %}
+    {% set buttonEnable = carousel.buttonEnable is not defined ? true : carousel.buttonEnable %}
+    {% set paginationEnable = carousel.paginationEnable is not defined ? true : carousel.paginationEnable %}
+    {% set buttonColor = carousel.buttonColor is not defined ? '#111' : carousel.buttonColor %}
+    <div class="wil-swiper" data-options='{ slidesPerView: 1 }'>
+      <div class="swiper">
+        <div class="swiper-wrapper">
+          {% for item in data %}
+            <div class="swiper-slide">
+              {% include "Shared/" ~ componentFile with { item, reverse: false } %}
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+      {% if buttonEnable %}
+        <div class="swiper-button-next bg:none!" style="color: {{ buttonColor }}"></div>
+        <div class="swiper-button-prev bg:none!" style="color: {{ buttonColor }}"></div>
+      {% endif %}
+      {% if paginationEnable %}
+        <div class="swiper-pagination" style="color: {{ buttonColor }}"></div>
+      {% endif %}
+    </div>
+  {% else %}
+    {% for item in data %}
+      {% include "Shared/" ~ componentFile with { item, reverse: true } %}
+    {% endfor %}
+  {% endif %}
+</div>
+
+{% endif %}

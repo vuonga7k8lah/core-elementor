@@ -1,0 +1,11 @@
+{% set componentName = "wil-card" %}
+{% set variant = data.general.variant %}
+{% set content = data.general.content %}
+{% set responsive = data.responsive %}
+{% set carousel = data.carousel %}
+
+{% include "Containers/" ~ variant ~ ".twig" with {
+  data: content,
+  responsive,
+  carousel,
+} %}

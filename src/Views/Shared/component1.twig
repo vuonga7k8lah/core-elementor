@@ -1,0 +1,41 @@
+{% set componentName = "wil-card" %}
+{% set background = item.backgroundColor ? 'background-color:' ~ item.backgroundColor ~ ';' : '' %}
+{% set iconColor = item.iconColor ? 'color:' ~ item.iconColor ~ ';' : '' %}
+{% set titleColor = item.titleColor ? 'color:' ~ item.titleColor ~ ';' : '' %}
+{% set textColor = item.textColor ? 'color:' ~ item.textColor ~ ';' : '' %}
+{% set buttonColor = item.buttonColor ? 'color:' ~ item.buttonColor ~ ';' : '' %}
+{% set buttonBackgroundColor = item.buttonBackgroundColor ? 'background-color:' ~ item.buttonBackgroundColor ~ ';' : '' %}
+
+<div class="{{ componentName }}-1 c:#000 lh:1.5 bgc:rgba(0,0,0,0.04) p:15px p:20px@sm p:30px@md bdrs:20px" style="{{ background }}">
+  {% if item.image %}
+    <div class="{{ componentName }}-1__img pos:relative pt:90% m:-15px m:-20px@sm m:-30px@md mb:0! bdrs:20px_20px_0_0 bgp:center bgz:cover" style="background-image: url('{{ item.image }}')">
+      {% if item.icon %}
+        <div class="{{ componentName }}-1__icon fz:pfs(30px,50px) pos:absolute t:50% l:50% trf:translate(-50%,-50%) c:#fff" style="{{ iconColor }}">
+          {% if item.icon.url %}
+            <img class="w:50px" src="{{ item.icon.url }}" alt="">
+          {% else %}
+              <i class="{{ item.icon }}"></i>
+          {% endif %}
+        </div>
+      {% endif %}
+    </div>
+  {% else %}
+    {% if item.icon %}
+      <div class="{{ componentName }}-1__icon fz:pfs(30px,50px)" style="{{ iconColor }}">
+        <i class="{{ item.icon }}"></i>
+      </div>
+    {% endif %}
+  {% endif %}
+
+{% if item.title %}
+  <h2 class="{{ componentName }}-1__title m:0 mt:15px fz:pfs(18px,20px) fw:600!" style="{{ titleColor }}">{{ item.title }}</h2>
+{% endif %}
+
+{% if item.text %}
+  <div class="{{ componentName }}-1__text mt:10px fz:15px c:#888" style="{{ textColor }}">{{ item.text }}</div>
+{% endif %}
+
+{% if item.buttonText %}
+  <a href="{{ item.buttonUrl }}" class="{{ componentName }}-1__btn d:inline-block bxsh:none o:0 td:none p:13px_20px bdrs:10px bgc:#6257de c:#fff mt:20px fz:14px fw:600" style="{{ buttonColor }}{{ buttonBackgroundColor }}">{{ item.buttonText }}</a>
+{% endif %}
+</div>

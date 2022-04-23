@@ -1,0 +1,59 @@
+{% set componentName = "wil-card" %}
+{% set xs = responsive.xs_2 is not defined ? '1' : responsive.xs_2 %}
+{% set sm = responsive.sm_2 is not defined ? '2' : responsive.sm_2 %}
+{% set md = responsive.md_2 is not defined ? '3' : responsive.md_2 %}
+{% set lg = responsive.lg_2 is not defined ? '3' : responsive.lg_2 %}
+{% set columnStyles = '--col-xs:' ~ xs ~ ';--col-sm:' ~ sm ~ ';--col-md:' ~ md ~ ';--col-lg:' ~ lg %}
+{% set componentFile = 'component2.twig' %}
+
+{% if data|length == 0 %}
+<div class="{{ componentName }}-wrapper">
+  <div class="p:40px fz:20px ta:center bgc:#eee">Click here to set up the card</div>
+</div>
+{% else %}
+
+<div class="{{ componentName }}-wrapper">
+  {% if carousel and carousel.enable %}
+    {% set buttonEnable = carousel.buttonEnable is not defined ? true : carousel.buttonEnable %}
+    {% set paginationEnable = carousel.paginationEnable is not defined ? true : carousel.paginationEnable %}
+    {% set buttonColor = carousel.buttonColor is not defined ? '#111' : carousel.buttonColor %}
+    <div
+      class="wil-swiper"
+      data-options='{
+        slidesPerView: {{ xs }},
+        breakpoints: {
+          768: { slidesPerView: {{ sm }} },
+          992: { slidesPerView: {{ md }} },
+          1200: { slidesPerView: {{ lg }} }
+        }
+      }'
+    >
+      <div class="swiper">
+        <div class="swiper-wrapper">
+          {% for item in data %}
+            <div class="swiper-slide">
+              {% include "Shared/" ~ componentFile with { item } %}
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+      {% if buttonEnable %}
+        <div class="swiper-button-next bg:none!" style="color: {{ buttonColor }}"></div>
+        <div class="swiper-button-prev bg:none!" style="color: {{ buttonColor }}"></div>
+      {% endif %}
+      {% if paginationEnable %}
+        <div class="swiper-pagination" style="color: {{ buttonColor }}"></div>
+      {% endif %}
+    </div>
+  {% else %}
+    <div class="{{ componentName }}-grid" style="{{ columnStyles }}">
+      {% for item in data %}
+        <div class="{{ componentName }}-col">
+          {% include "Shared/" ~ componentFile with { item } %}
+        </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+</div>
+
+{% endif %}
